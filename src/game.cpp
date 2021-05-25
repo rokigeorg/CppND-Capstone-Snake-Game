@@ -13,7 +13,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
   for(int i = 0; i < 3; i++)
   {
     food = Food();
-    PlaceFood(food);
+    PlaceFood(&food);
     foods.emplace_back(food);
   }
 //  PlaceFood(); Can be deleted if not needed anymore
@@ -59,39 +59,43 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   }
 }
 
-/* DETELE if not needed anymore
-void Game::PlaceFood() {
+void Game::PlaceFood(Food *pFood) 
+{
   int x, y;
+  bool isOccupied;
+
   while (true) {
+    isOccupied = true;
     x = random_w(engine);
     y = random_h(engine);
+
+    // check if at food is placed at this position 
+    isOccupied = IsOtherFoodAtPosition(x,y);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    if (!snake.SnakeCell(x, y)) {
-
-      food.SetPosition(x,y);
+    if (!snake.SnakeCell(x, y) && !isOccupied) {
+      pFood->SetPosition(x,y);
       return;
     }
   }
 }
-*/
 
-void Game::PlaceFood(Food &pFood) 
+bool Game::IsOtherFoodAtPosition(int new_x, int new_y)
 {
-  int x, y;
-  while (true) {
-    x = random_w(engine);
-    y = random_h(engine);
-
-    // TODO check all currently placed foods too, before set x,y
-
-    // Check that the location is not occupied by a snake item before placing
-    // food.
-    if (!snake.SnakeCell(x, y)) {
-      pFood.SetPosition(x,y);
-      return;
+  bool result = false;
+  for(Food food : foods)
+  {
+    if(new_x == food.GetPosX() && new_y == food.GetPosY())
+    {
+      std::cout<<"Food at this position " << std::endl;
+      result = true;
+    }
+    else
+    {
+        std::cout<<"No food at this position " << std::endl;
     }
   }
+  return result;
 }
 
 void Game::Update() {
@@ -102,15 +106,15 @@ void Game::Update() {
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);
 
-  for(Food food : foods)
+  for(int i = 0; i< foods.size(); i++)
   {
-    SDL_Point foodPos = food.GetPosition();
+    SDL_Point foodPos = foods[i].GetPosition();
 
     // Check if there's food over here
     if (foodPos.x == new_x && foodPos.y == new_y) 
     {
       score++;
-      PlaceFood(food);                                  // TODO potential ERROR here
+      PlaceFood(&foods[i]);                                  // TODO potential ERROR here
       // Grow snake and increase speed.
       snake.GrowBody();
       snake.speed += 0.008;

@@ -30,8 +30,8 @@ class Game {
 
   int score{0};
 
-  void PlaceFood();
-  void PlaceFood(Food &pFood);
+  bool IsOtherFoodAtPosition(int new_x, int new_y);
+  void PlaceFood(Food *pFood);
   void Update();
 };
 
