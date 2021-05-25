@@ -4,19 +4,26 @@
 #include <random>
 #include "SDL.h"
 
-struct RgbaColor
+class RgbaColor
 {
+    private:
     unsigned int red;
     unsigned int green;
     unsigned int blue;
     unsigned int alpha;
     
-    RgbaColor():        
-        red(0x00),
-        green(0x00),
-        blue(0x00),
-        alpha(0x00)
-    {}
+    public:
+
+    RgbaColor();
+    void SetSnakeColor();
+    void SetFoodColor();
+    void SetToxicFoodColor();
+
+    unsigned int GetRed();
+    unsigned int GetGreen();
+    unsigned int GetBlue();
+    unsigned int GetAlpha();
+
 };
 
 
@@ -26,6 +33,7 @@ class Food : public RgbaColor  {
     ~Food();
 
     void SetPosition(int x_pos, int y_pos);
+    void SetIsToxic(bool pIsToxic);
     SDL_Point GetPosition();
     int GetPosX();
     int GetPosY();

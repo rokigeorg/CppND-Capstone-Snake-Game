@@ -52,7 +52,8 @@ void Renderer::Render(Snake const snake, std::vector<Food> const &foods)
   for(Food food : foods)
   {
     // Render food
-    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
+    //SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
+    SDL_SetRenderDrawColor(sdl_renderer, food.GetRed(), food.GetGreen(), food.GetBlue(), food.GetAlpha());
     block.x = food.GetPosX() * block.w;
     block.y = food.GetPosY() * block.h;
     SDL_RenderFillRect(sdl_renderer, &block);

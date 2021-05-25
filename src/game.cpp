@@ -87,15 +87,29 @@ bool Game::IsOtherFoodAtPosition(int new_x, int new_y)
   {
     if(new_x == food.GetPosX() && new_y == food.GetPosY())
     {
-      std::cout<<"Food at this position " << std::endl;
       result = true;
-    }
-    else
-    {
-        std::cout<<"No food at this position " << std::endl;
     }
   }
   return result;
+}
+
+void Game::MixFoodColor()
+{
+  int rnd = random_w(engine) % 3;
+
+  switch( (rnd) )
+  {
+    case 0:
+      foods[rnd].SetSnakeColor();
+      break;
+    case 1:
+      foods[rnd].SetFoodColor();
+      break;
+    case 2:
+      foods[rnd].SetToxicFoodColor();
+      break;  
+  }
+
 }
 
 void Game::Update() {
@@ -114,7 +128,10 @@ void Game::Update() {
     if (foodPos.x == new_x && foodPos.y == new_y) 
     {
       score++;
-      PlaceFood(&foods[i]);                                  // TODO potential ERROR here
+      PlaceFood(&foods[i]);
+
+      // SetFoodColor
+      MixFoodColor();
       // Grow snake and increase speed.
       snake.GrowBody();
       snake.speed += 0.008;

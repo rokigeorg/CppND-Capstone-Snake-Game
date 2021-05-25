@@ -32,6 +32,8 @@ class Game {
 
   bool IsOtherFoodAtPosition(int new_x, int new_y);
   void PlaceFood(Food *pFood);
+  void MixFoodColor();
+
   void Update();
 };
 
