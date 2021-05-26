@@ -1,5 +1,6 @@
 #include "Food.h"
 #include "SDL.h"
+#include <cstdlib>
 
 
 
@@ -38,6 +39,30 @@ unsigned int RgbaColor::GetRed(){return red;}
 unsigned int RgbaColor::GetGreen(){return green;}
 unsigned int RgbaColor::GetBlue(){return blue;}
 unsigned int RgbaColor::GetAlpha(){return alpha;}
+
+int RgbaColor::RandomNumber(int min, int max)
+{
+   return rand() % max + min;
+}
+
+void RgbaColor::SetRandomColor()
+{
+  int rnd = RandomNumber(0,3);
+
+  switch( (rnd) )
+  {
+    case 0:
+      SetSnakeColor();
+      break;
+    case 1:
+      SetFoodColor();
+      break;
+    case 2:
+      SetToxicFoodColor();
+      break;  
+  }
+}
+
 
 //################################################################################################
 //############################ Food Implenetation ################################################
@@ -85,4 +110,13 @@ int Food::GetPosY()
 bool Food::IsToxic()
 {
     return isToxic;
+}
+
+Food& Food::operator=(const Food& f)
+{
+    isToxic = f.isToxic;
+    x = f.x;
+    y = f.y;
+
+    return *this;
 }

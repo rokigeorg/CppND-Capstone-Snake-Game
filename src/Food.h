@@ -11,6 +11,8 @@ class RgbaColor
     unsigned int green;
     unsigned int blue;
     unsigned int alpha;
+
+    int RandomNumber(int min, int max);
     
     public:
 
@@ -24,6 +26,7 @@ class RgbaColor
     unsigned int GetBlue();
     unsigned int GetAlpha();
 
+    void SetRandomColor();
 };
 
 
@@ -39,10 +42,13 @@ class Food : public RgbaColor  {
     int GetPosY();
     bool IsToxic();
 
+    Food& operator=(const Food& f);
+
     private:
     bool isToxic;
     int x;
     int y;
+
 };
 
 #endif
