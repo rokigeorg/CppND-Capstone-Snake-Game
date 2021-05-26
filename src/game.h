@@ -21,6 +21,8 @@ class Game {
   Snake snake;
   //Food food;
   std::vector<Food> foods;
+  std::vector<Food> toxicFoods;
+
 
 
   std::random_device dev;
@@ -30,9 +32,10 @@ class Game {
 
   int score{0};
 
+  bool HasEatenToxicFood(int player_x, int player_y);
   bool IsOtherFoodAtPosition(int new_x, int new_y);
   void PlaceFood(Food *pFood);
-  void MixFoodColor();
+  void VerifyOnlyToxicFood();
 
   void Update();
 };
