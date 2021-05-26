@@ -39,7 +39,7 @@ Renderer::~Renderer() {
 }
 
 //void Renderer::Render(Snake const snake, SDL_Point const &food) 
-void Renderer::Render(Snake const snake, std::vector<Food> const &foods)
+void Renderer::Render(Snake const snake, std::vector<Food> const &foods, std::vector<Food> const &toxicFoods)
 {
   SDL_Rect block;
   block.w = screen_width / grid_width;
@@ -56,6 +56,15 @@ void Renderer::Render(Snake const snake, std::vector<Food> const &foods)
     SDL_SetRenderDrawColor(sdl_renderer, food.GetRed(), food.GetGreen(), food.GetBlue(), food.GetAlpha());
     block.x = food.GetPosX() * block.w;
     block.y = food.GetPosY() * block.h;
+    SDL_RenderFillRect(sdl_renderer, &block);
+  }
+
+  for(Food toxicFood : toxicFoods)
+  {
+    // Render toxicfood
+    SDL_SetRenderDrawColor(sdl_renderer, toxicFood.GetRed(), toxicFood.GetGreen(), toxicFood.GetBlue(), toxicFood.GetAlpha());
+    block.x = toxicFood.GetPosX() * block.w;
+    block.y = toxicFood.GetPosY() * block.h;
     SDL_RenderFillRect(sdl_renderer, &block);
   }
 

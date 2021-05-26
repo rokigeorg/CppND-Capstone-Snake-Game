@@ -13,7 +13,7 @@ class Renderer {
   ~Renderer();
 
 //  void Render(Snake const snake, SDL_Point const &food);  DELETE when not needed anymore
-  void Render(Snake const snake, std::vector<Food> const &foods);
+  void Render(Snake const snake, std::vector<Food> const &foods, std::vector<Food> const &toxicFoods);
   void UpdateWindowTitle(int score, int fps);
 
  private:

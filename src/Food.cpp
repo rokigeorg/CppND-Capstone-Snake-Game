@@ -71,7 +71,7 @@ void RgbaColor::SetRandomColor()
 Food::Food(): 
 x(0), 
 y(0), 
-isToxic(true)
+isToxic(false)
 {}
 
 Food::~Food()
