@@ -15,10 +15,13 @@ It will be extend as following:
 * snake can change color each time it eats one good food
 
 
-
 ### Realization of project idea
 1. Create food class
 2. Inheritate Food class from SDL_Point
 3. Create a vector of foods in game.h
 4. Pass vector of foods to render method Render(Snake const snake, vector<Food> const &foods);
 5. Implement a member function for PlaceFood in class Food
+
+
+### Realization of aggregator
+1. Create Aggregator class
