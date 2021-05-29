@@ -36,6 +36,7 @@ void Aggregator::Run()
             break;
         case eSaveOwnResults:
             SaveResults();
+            running = false;
             break;
         default:
             break;
@@ -54,7 +55,7 @@ void Aggregator::AskUser()
     std::cout << "- OPTION 0: Quit the game. \n";
     std::cout << "- OPTION 1: Display last results. \n";
     std::cout << "- OPTION 2: Display overall ranking. \n";
-    std::cout << "- OPTION 3: Save own results. \n\n";
+    std::cout << "- OPTION 3: Save own results and quit game. \n\n";
 
     while (true)
     {
@@ -102,6 +103,8 @@ void Aggregator::DisplayRankingTable()
         std::cout << "| " << rank << " | " << ri._name << " | " << ri._score << " | " << ri._size << " |" << std::endl;
         rank++;
     }
+
+    resultItems.clear();
 }
 
 void Aggregator::SaveResults()
