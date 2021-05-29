@@ -25,3 +25,7 @@ It will be extend as following:
 
 ### Realization of aggregator
 1. Create Aggregator class
+2. Write to file the current game results (Name, Score, Size)
+3. Read from file and parse name, score, size in object result-item, save each result item in vector
+4. Sort result items vector for size or score
+5. Print sorted result item vector
