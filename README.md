@@ -1,12 +1,28 @@
-# CPPND: Capstone Snake Game Example
+# CPPND: Capstone Snake Game from Georg Rokita
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This is a repo is the Capstone project of myself for the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). 
 
-<img src="snake_game.gif"/>
+<img src="snake_game2.png"/>
 
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
+The Snake game is has two extra features.
+It has multiple green foods, which can be eaten by the snake.
+Also there are red foods, which the snake is not allowed to eat.
+Another feature is that you can save the results of the last game. 
+In addition you are able to display a ranking of best game results.
 
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+## Addressed rubics
+* The project demonstrates an understanding of C++ functions and control structures.
+  * See Aggregator::Run() in Aggregator.cpp, line 16
+* The project reads data from a file and process the data, or the program writes data to a file.
+  * See Aggregator::ReadFile() and Aggregator::SaveResults(), in Aggregator.cpp line 146 and line 107
+* The project accepts user input and processes the input.
+  * See Aggregator::InputUserName(), in Aggregator.cpp line 136
+* The project uses Object Oriented Programming techniques.
+  * See class Foods in Foods.h in line 33
+* Classes use appropriate access specifiers for class members.
+  * See class RgbaColor in Foods.h in line 9 and 17
+* Class constructors utilize member initialization lists.
+  * See Constructor implementation of Aggregator in aggregator.cpp in line 12
 
 ## Dependencies for Running Locally
 * cmake >= 3.7

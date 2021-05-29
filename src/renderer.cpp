@@ -38,7 +38,6 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-//void Renderer::Render(Snake const snake, SDL_Point const &food) 
 void Renderer::Render(Snake const snake, std::vector<Food> const &foods, std::vector<Food> const &toxicFoods)
 {
   SDL_Rect block;

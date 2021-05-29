@@ -1,6 +1,6 @@
 Roy 22 23
 Bob 43 44
-Bill 10 11
-Georg 20 21
+Bay 10 11
+Gil 20 21
 Kai 30 31
-Joe 6 7
+Joe 66 67
